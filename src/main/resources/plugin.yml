@@ -1,0 +1,7 @@
+name: TwitchKillMePlugin
+version: '${project.version}'
+main: com.github.sintcraft.plugins.twitchkillmeplugin.TwitchKillMePlugin
+api-version: 1.19
+depend: [ CommandAPI ]
+authors: [ sintcraft ]
+website: https://github.com/sintcraft/twitch-kill-me-plugin
