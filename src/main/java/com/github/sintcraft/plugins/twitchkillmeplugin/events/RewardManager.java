@@ -33,7 +33,7 @@ public class RewardManager {
     ChannelPointsRedemption redemption = e.getRedemption();
     int amount = (int) redemption.getReward().getCost();
     String userName = redemption.getUser().getDisplayName();
-    String channelName = redemption.getReward().get;
+    String channelName = redemption.getUser().getDisplayName();
     String channelID = redemption.getReward().getChannelId();
     System.out.println(String.format("%s, %s, %s, %s", amount, userName, channelName, channelID));
   }
