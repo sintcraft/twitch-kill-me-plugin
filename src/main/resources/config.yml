@@ -1,0 +1,30 @@
+twitch:
+  token: "YOUR TOKEN"
+  channels:
+    - 120114410
+
+# PLACEHOLDERS
+# %streamer%
+# %username%
+# %%
+rewards:
+  0:
+    preset: "summon" # summon / place / give / drop / tp / command
+    price:
+      points: "none" # none or number
+      bits: "12" # none or number
+    settings:
+      type: "ZOMBIE" #https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
+      name: "%username%'s"
+    notify:
+      twitch-msg: ""
+      minecraft-msg: "&b%usernames%'s &fspawn one zombie!"
+      title: ""
+      subtitle: ""
+      title-fadein: 20
+      title-fadeout: 20
+      actionbar: ""
+      sound:
+        sound: "ENTITY_PLAYER_LEVELUP" # "" or https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+        pitch: 1
+        volume: 1
