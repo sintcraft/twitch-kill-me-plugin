@@ -3,6 +3,9 @@ twitch:
   channels:
     - 120114410
 
+players:
+  - sintcraft
+
 # PLACEHOLDERS
 # %streamer%
 # %username%
@@ -11,7 +14,7 @@ rewards:
   0:
     preset: "summon" # summon / place / give / drop / tp / command / skin / skin-random
     price:
-      points: "none" # none or number
+      points: 400 # none or number
       bits: 12 # none or number
     settings:
       summon-radius: 3

@@ -1,6 +1,5 @@
 package com.github.sintcraft.plugins.twitchkillmeplugin.rewards;
 
-import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 
@@ -15,8 +14,8 @@ public class BasicReward {
     this.id = id;
   }
 
-  public void run() {
-
+  public void run(Player player) {
+    // Login for run this reward
   }
 
   public void sendNotify(Player player) {
@@ -72,5 +71,15 @@ public class BasicReward {
     if(Math.random() <= 0.5) {
       return -cord;
     } else return cord;
+  }
+
+  public boolean bitsActivate(int amount) {
+    if(config.getString("price.bits").equalsIgnoreCase("none")) return false;
+    return config.getInt("price.bits") == amount;
+  }
+
+  public boolean pointsActivate(int amount) {
+    if(config.getString("price.points").equalsIgnoreCase("none")) return false;
+    return config.getInt("price.points") == amount;
   }
 }
