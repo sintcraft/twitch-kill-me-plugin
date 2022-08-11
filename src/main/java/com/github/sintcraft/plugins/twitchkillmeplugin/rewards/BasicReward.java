@@ -23,23 +23,54 @@ public class BasicReward {
     final ConfigurationSection notify = config.getConfigurationSection("notify");
 
     // Sound
-    player.playSound(
-            player.getLocation(),
-            notify.getString("sound.sound"),
-            (float) notify.getDouble("sound.volume"),
-            (float) notify.getDouble("sound.pitch")
-    );
+    if(!notify.getString("sound.sound").equalsIgnoreCase("")) {
+      player.playSound(
+              player.getLocation(),
+              notify.getString("sound.sound"),
+              (float) notify.getDouble("sound.volume"),
+              (float) notify.getDouble("sound.pitch")
+      );
+    }
 
     // Title
-    player.sendTitle(
-            notify.getString("title"),
-            notify.getString("subtitle"),
-            notify.getInt("title-fadein"),
-            notify.getInt("title-fadein"),
-            notify.getInt("title-fadeout")
-    );
+    if(!notify.getString("title").equalsIgnoreCase("")) {
+      player.sendTitle(
+              notify.getString("title"),
+              notify.getString("subtitle"),
+              notify.getInt("title-fadein"),
+              notify.getInt("title-fadein"),
+              notify.getInt("title-fadeout")
+      );
+    }
 
     // Actionbar
-    player.sendActionBar(notify.getString("actionbar"));
+    if(!notify.getString("actionbar").equalsIgnoreCase("")) {
+      player.sendActionBar(notify.getString("actionbar"));
+    }
+  }
+
+  public ConfigurationSection getConfig() {
+    return config;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public ConfigurationSection getSettings() {
+    return settings;
+  }
+
+  public static double randomizerCord(double radius) {
+    double cord = Math.random() * radius;
+    if(Math.random() <= 0.5) {
+      return -cord;
+    } else return cord;
+  }
+  public static int randomizerCord(int radius) {
+    int cord = Math.round((float) Math.random() * radius);
+    if(Math.random() <= 0.5) {
+      return -cord;
+    } else return cord;
   }
 }

@@ -9,18 +9,21 @@ twitch:
 # %%
 rewards:
   0:
-    preset: "summon" # summon / place / give / drop / tp / command
+    preset: "summon" # summon / place / give / drop / tp / command / skin / skin-random
     price:
       points: "none" # none or number
-      bits: "12" # none or number
+      bits: 12 # none or number
     settings:
+      summon-radius: 3
       type: "ZOMBIE" #https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
       name: "%username%'s"
+      equip-default: true
+      health: 20
     notify:
       twitch-msg: ""
       minecraft-msg: "&b%usernames%'s &fspawn one zombie!"
-      title: ""
-      subtitle: ""
+      title: "" # "" don't send title
+      subtitle: "" # "" don't send subtitle
       title-fadein: 20
       title-fadeout: 20
       actionbar: ""
