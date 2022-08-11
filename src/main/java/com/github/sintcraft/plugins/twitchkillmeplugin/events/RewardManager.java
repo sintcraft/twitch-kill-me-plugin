@@ -48,7 +48,7 @@ public class RewardManager {
       plugin.getPlayers().forEach(p -> {
         Player player = Bukkit.getPlayer(p);
         if(player == null) return;
-        reward.run(player);
+        reward.run(player, channelName, userName, channelID, amount, "points");
       });
       break;
     };
@@ -68,7 +68,7 @@ public class RewardManager {
       plugin.getPlayers().forEach(p -> {
         Player player = Bukkit.getPlayer(p);
         if(player == null) return;
-        reward.run(player);
+        reward.run(player, channelName, userName, channelID, amount, "bits");
       });
       break;
     };

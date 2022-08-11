@@ -9,28 +9,30 @@ players:
 # PLACEHOLDERS
 # %streamer%
 # %username%
-# %%
+# %type%
 rewards:
   0:
-    preset: "summon" # summon / place / give / drop / tp / command / skin / skin-random
+    preset: "summon" # summon / give / drop / tp / place / command / skin / skin-random
     price:
       points: 400 # none or number
       bits: 12 # none or number
     settings:
-      summon-radius: 3
+      summon-radius: 3 # double, 0 spawn in player position
+      amount: 2 # integer
       type: "ZOMBIE" #https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
       name: "%username%'s"
       equip-default: true
       health: 20
+      top-world: false # mob spawn in top of the world
     notify:
       twitch-msg: ""
-      minecraft-msg: "&b%usernames%'s &fspawn one zombie!"
-      title: "" # "" don't send title
-      subtitle: "" # "" don't send subtitle
+      minecraft-msg: "&b%username%'s &fspawn two zombies!"
+      title: "&b%username%'s &fReward!" # "" don't send title
+      subtitle: "&fSpawn a &2zombies" # "" don't send subtitle
       title-fadein: 20
       title-fadeout: 20
-      actionbar: ""
+      actionbar: "&aReward type: &d%type%"
       sound:
         sound: "ENTITY_PLAYER_LEVELUP" # "" or https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
-        pitch: 1
-        volume: 1
+        pitch: 2
+        volume: 0.3
