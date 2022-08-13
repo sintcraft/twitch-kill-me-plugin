@@ -19,20 +19,44 @@ rewards:
     settings:
       summon-radius: 3 # double, 0 spawn in player position
       amount: 2 # integer
-      type: "ZOMBIE" #https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
-      name: "%username%'s"
-      equip-default: true
-      health: 20
+      type: "ZOMBIE" # Types in https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/entity/EntityType.html
+      name: "%username%'s" # Name of the mob
+      equip-default: true # Modify vanilla enabled
+      health: 20 # Integer minimum 0
       top-world: false # mob spawn in top of the world
     notify:
-      twitch-msg: ""
-      minecraft-msg: "&b%username%'s &fspawn two zombies!"
+      twitch-msg: "" # "" don't send message in twitch
+      minecraft-msg: "&b%username%'s &fspawn two zombies!" # "" don't send message in minecraft
       title: "&b%username%'s &fReward!" # "" don't send title
       subtitle: "&fSpawn a &2zombies" # "" don't send subtitle
-      title-fadein: 20
-      title-fadeout: 20
-      actionbar: "&aReward type: &d%type%"
+      title-fadein: 20 # Integer in ticks
+      title-fadeout: 20 # Integer in ticks
+      actionbar: "&aReward type: &d%type%" # "" don't send actionbar
       sound:
         sound: "ENTITY_PLAYER_LEVELUP" # "" or https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
         pitch: 2
+        volume: 0.3
+  1:
+    preset: "give" # summon / give / drop / tp / place / command / skin / skin-random
+    price:
+      points: 400 # none or number
+      bits: 12 # none or number
+    settings:
+      slot: undefined # "undefined" or integer number (0-45)
+      amount: 2 # Integer minimum 1
+      material: "POTATO" # Material list in https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+      name: "" # "" for item's default name
+      lore:
+        - "%username%'s reward"
+    notify:
+      twitch-msg: "" # "" don't send message in twitch
+      minecraft-msg: "&b%username%'s &fgive a potato!" # "" don't send message in minecraft
+      title: "&b%username%'s &fReward!" # "" don't send title
+      subtitle: "" # "" don't send subtitle
+      title-fadein: 20 # Integer in ticks
+      title-fadeout: 20 # Integer in ticks
+      actionbar: "&aReward type: &d%type%" # "" don't send actionbar
+      sound:
+        sound: "ENTITY_EXPERIENCE_ORB_PICKUP" # "" or https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+        pitch: 1
         volume: 0.3
