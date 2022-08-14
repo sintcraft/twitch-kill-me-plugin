@@ -42,12 +42,33 @@ rewards:
       points: 400 # none or number
       bits: 12 # none or number
     settings:
-      slot: undefined # "undefined" or integer number (0-45)
+      slot: -1 # set -1 for random slot or integer number (0-45)
       amount: 2 # Integer minimum 1
       material: "POTATO" # Material list in https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
       name: "" # "" for item's default name
-      lore:
+      lore: # "" for no lore
         - "%username%'s reward"
+    notify:
+      twitch-msg: "" # "" don't send message in twitch
+      minecraft-msg: "&b%username%'s &fgive a potato!" # "" don't send message in minecraft
+      title: "&b%username%'s &fReward!" # "" don't send title
+      subtitle: "" # "" don't send subtitle
+      title-fadein: 20 # Integer in ticks
+      title-fadeout: 20 # Integer in ticks
+      actionbar: "&aReward type: &d%type%" # "" don't send actionbar
+      sound:
+        sound: "ENTITY_EXPERIENCE_ORB_PICKUP" # "" or https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+        pitch: 1
+        volume: 0.3
+  2:
+    preset: "drop" # summon / give / drop / tp / place / command / skin / skin-random
+    price:
+      points: 400 # none or number
+      bits: 12 # none or number
+    settings:
+      slot: "main-hand" # main-hand / second-hand / helmet / chestplate / leggings / boots / random
+      amount: 2 # Set -1 for all items in this slot Integer minimum 1
+      mode: "drop" # drop / delete
     notify:
       twitch-msg: "" # "" don't send message in twitch
       minecraft-msg: "&b%username%'s &fgive a potato!" # "" don't send message in minecraft

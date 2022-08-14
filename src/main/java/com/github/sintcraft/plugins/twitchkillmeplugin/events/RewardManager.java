@@ -50,8 +50,7 @@ public class RewardManager {
         if(player == null) return;
         reward.run(player, channelName, userName, channelID, amount, "points");
       });
-      break;
-    };
+    }
 
     System.out.println(String.format("%s, %s, %s, %s", amount, userName, channelName, channelID));
   }
@@ -70,8 +69,7 @@ public class RewardManager {
         if(player == null) return;
         reward.run(player, channelName, userName, channelID, amount, "bits");
       });
-      break;
-    };
+    }
 
     System.out.println(String.format("%s, %s, %s, %s", amount, userName, channelName, channelID));
   }

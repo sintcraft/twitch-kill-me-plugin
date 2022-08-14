@@ -21,8 +21,8 @@ public class BasicReward {
     // Login for run this reward
     if(config.getString("preset").equalsIgnoreCase("summon")) {
       SummonReward.run(player, this, channelName, username, type);
-    } else if (config.getString("preset").equalsIgnoreCase("summon")) {
-
+    } else if (config.getString("preset").equalsIgnoreCase("give")) {
+      GiveReward.run(player, this, channelName, username, type);
     } else if (config.getString("preset").equalsIgnoreCase("give")) {
 
     } else if (config.getString("preset").equalsIgnoreCase("drop")) {
