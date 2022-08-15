@@ -1,5 +1,7 @@
 package com.github.sintcraft.plugins.twitchkillmeplugin.rewards;
 
+import com.github.sintcraft.plugins.twitchkillmeplugin.TwitchKillMePlugin;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
@@ -20,11 +22,17 @@ public class BasicReward {
     if(config.getConfigurationSection("notify") != null) sendNotify(player, channelName, username, type);
     // Login for run this reward
     if(config.getString("preset").equalsIgnoreCase("summon")) {
-      SummonReward.run(player, this, channelName, username, type);
+      Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), () -> {
+        SummonReward.run(player, this, channelName, username, type);
+      });
     } else if (config.getString("preset").equalsIgnoreCase("give")) {
-      GiveReward.run(player, this, channelName, username, type);
+      Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), () -> {
+        GiveReward.run(player, this, channelName, username, type);
+      });
     } else if (config.getString("preset").equalsIgnoreCase("drop")) {
-      DropReward.run(player, this, channelName, username, type);
+      Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), () -> {
+        DropReward.run(player, this, channelName, username, type);
+      });
     } else if (config.getString("preset").equalsIgnoreCase("drop")) {
 
     } else if (config.getString("preset").equalsIgnoreCase("tp")) {
