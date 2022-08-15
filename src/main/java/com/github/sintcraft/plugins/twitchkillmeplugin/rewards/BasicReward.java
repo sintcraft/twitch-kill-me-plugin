@@ -23,8 +23,8 @@ public class BasicReward {
       SummonReward.run(player, this, channelName, username, type);
     } else if (config.getString("preset").equalsIgnoreCase("give")) {
       GiveReward.run(player, this, channelName, username, type);
-    } else if (config.getString("preset").equalsIgnoreCase("give")) {
-
+    } else if (config.getString("preset").equalsIgnoreCase("drop")) {
+      DropReward.run(player, this, channelName, username, type);
     } else if (config.getString("preset").equalsIgnoreCase("drop")) {
 
     } else if (config.getString("preset").equalsIgnoreCase("tp")) {

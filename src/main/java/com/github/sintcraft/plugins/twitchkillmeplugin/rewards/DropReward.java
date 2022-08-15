@@ -1,5 +1,6 @@
 package com.github.sintcraft.plugins.twitchkillmeplugin.rewards;
 
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -9,6 +10,7 @@ public class DropReward {
     if(player.getInventory().isEmpty()) return;
     ConfigurationSection settings = basicReward.getSettings();
     ItemStack item = null;
+    int slot = 0;
 
     if(settings.getString("slot").equalsIgnoreCase("main-hand")) {
       item = player.getInventory().getItemInMainHand();
@@ -22,10 +24,42 @@ public class DropReward {
       item = player.getInventory().getLeggings();
     } else if (settings.getString("slot").equalsIgnoreCase("boots")) {
       item = player.getInventory().getBoots();
-    } else if (settings.getString("slot").equalsIgnoreCase("random")) {
-      item = player.getInventory().getContents()[(int) Math.floor(Math.random() * player.getInventory().getContents().length)];
+    } else {
+      slot = (int) Math.floor(Math.random() * player.getInventory().getContents().length);
+      item = player.getInventory().getContents()[slot];
     }
 
     if(item == null) return;
+
+    if(settings.getString("mode").equalsIgnoreCase("delete")) {
+      item.setType(Material.AIR);
+    } else {
+      if(item.getAmount() > settings.getInt("amount")) {
+        ItemStack drop = item.clone();
+        drop.setAmount(settings.getInt("amount"));
+        player.getWorld().dropItem(player.getLocation(), drop);
+        item.setAmount(item.getAmount() - settings.getInt("amount"));
+      } else {
+        player.getWorld().dropItem(player.getLocation(), item);
+        item.setAmount(1);
+        item.setType(Material.AIR);
+      }
+    }
+
+    if(settings.getString("slot").equalsIgnoreCase("main-hand")) {
+      player.getInventory().setItemInMainHand(item);
+    } else if (settings.getString("slot").equalsIgnoreCase("second-hand")) {
+      player.getInventory().setItemInOffHand(item);
+    } else if (settings.getString("slot").equalsIgnoreCase("helmet")) {
+      player.getInventory().setHelmet(item);
+    } else if (settings.getString("slot").equalsIgnoreCase("chestplate")) {
+      player.getInventory().setChestplate(item);
+    } else if (settings.getString("slot").equalsIgnoreCase("leggings")) {
+      player.getInventory().setLeggings(item);
+    } else if (settings.getString("slot").equalsIgnoreCase("boots")) {
+      player.getInventory().setBoots(item);
+    } else {
+      player.getInventory().setItem(slot, item);
+    }
   }
 }

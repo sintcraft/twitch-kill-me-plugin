@@ -66,9 +66,28 @@ rewards:
       points: 400 # none or number
       bits: 12 # none or number
     settings:
+      mode: "drop" # drop / delete
       slot: "main-hand" # main-hand / second-hand / helmet / chestplate / leggings / boots / random
       amount: 2 # Set -1 for all items in this slot Integer minimum 1
-      mode: "drop" # drop / delete
+    notify:
+      twitch-msg: "" # "" don't send message in twitch
+      minecraft-msg: "&b%username%'s &fdrop a item in main hand!" # "" don't send message in minecraft
+      title: "&b%username%'s &fReward!" # "" don't send title
+      subtitle: "" # "" don't send subtitle
+      title-fadein: 20 # Integer in ticks
+      title-fadeout: 20 # Integer in ticks
+      actionbar: "" # "" don't send actionbar
+      sound:
+        sound: "ENTITY_EXPERIENCE_ORB_PICKUP" # "" or https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+        pitch: 1
+        volume: 0.3
+  3:
+    preset: "tp" # summon / give / drop / tp / place / command / skin / skin-random
+    price:
+      points: 400 # none or number
+      bits: 12 # none or number
+    settings:
+      mode: "random" # random / equals
     notify:
       twitch-msg: "" # "" don't send message in twitch
       minecraft-msg: "&b%username%'s &fgive a potato!" # "" don't send message in minecraft
