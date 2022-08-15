@@ -87,12 +87,46 @@ rewards:
       points: 400 # none or number
       bits: 12 # none or number
     settings:
-      mode: "random" # random / equals
+      mode: "random" # random / equals / random-center
+      top-world: false # mob spawn in top of the world
+      x: 10 # Double use in all modes
+      y: 5 # Double use in all modes, set 0 for equals player height.
+      z: 10 # Double use in all modes
     notify:
       twitch-msg: "" # "" don't send message in twitch
-      minecraft-msg: "&b%username%'s &fgive a potato!" # "" don't send message in minecraft
-      title: "&b%username%'s &fReward!" # "" don't send title
+      minecraft-msg: "&b%username%'s &fteleport random!" # "" don't send message in minecraft
+      title: "" # "" don't send title
       subtitle: "" # "" don't send subtitle
+      title-fadein: 20 # Integer in ticks
+      title-fadeout: 20 # Integer in ticks
+      actionbar: "&aReward type: &d%type%" # "" don't send actionbar
+      sound:
+        sound: "ENTITY_WARDEN_EMERGE" # "" or https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+        pitch: 1
+        volume: 0.3
+  4:
+    preset: "place" # summon / give / drop / tp / place / command / skin / skin-random
+    price:
+      points: 400 # none or number
+      bits: 12 # none or number
+    settings:
+      position: "player" # player / world
+      blocks:
+        '0':
+          material: "IRON_BARS" # Material list in https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+          orientation: "north" # north / east / west / south
+          top: false # If material support this property
+          cords: [1, 0, 1] # [x, y, z] | floor is y=-1
+        '1':
+          material: "IRON_BARS"
+          orientation: "north"
+          top: false
+          cords: [1, 0, 1]
+    notify:
+      twitch-msg: "" # "" don't send message in twitch
+      minecraft-msg: "&b%username%'s &fplace a cage!" # "" don't send message in minecraft
+      title: "&b%username%'s &fowo!" # "" don't send title
+      subtitle: "Hi!" # "" don't send subtitle
       title-fadein: 20 # Integer in ticks
       title-fadeout: 20 # Integer in ticks
       actionbar: "&aReward type: &d%type%" # "" don't send actionbar

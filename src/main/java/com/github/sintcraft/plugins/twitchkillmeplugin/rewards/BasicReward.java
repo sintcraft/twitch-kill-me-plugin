@@ -33,8 +33,8 @@ public class BasicReward {
       Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), () -> {
         DropReward.run(player, this, channelName, username, type);
       });
-    } else if (config.getString("preset").equalsIgnoreCase("drop")) {
-
+    } else if (config.getString("preset").equalsIgnoreCase("tp")) {
+      Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), new TpReward(player, this, channelName, username, type));
     } else if (config.getString("preset").equalsIgnoreCase("tp")) {
 
     }
