@@ -35,13 +35,17 @@ public class BasicReward {
       });
     } else if (config.getString("preset").equalsIgnoreCase("tp")) {
       Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), new TpReward(player, this, channelName, username, type));
-    } else if (config.getString("preset").equalsIgnoreCase("tp")) {
-
+    } else if (config.getString("preset").equalsIgnoreCase("place")) {
+      Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), new PlaceReward(player, this, channelName, username, type));
+    } else if (config.getString("preset").equalsIgnoreCase("command")) {
+      Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), new PlaceReward(player, this, channelName, username, type));
     }
   }
 
   public void sendNotify(Player player, String channelName, String username, String type) {
     final ConfigurationSection notify = config.getConfigurationSection("notify");
+
+    if(notify == null) return;
 
     // Sound
     if(!notify.getString("sound.sound").equalsIgnoreCase("")) {
@@ -115,5 +119,9 @@ public class BasicReward {
                     .replaceAll("%streamer%", channelName)
                     .replaceAll("%type%", type)
     );
+  }
+
+  public boolean hypeTrainActivate(int amount) {
+    return config.getBoolean("price.hypetrain");
   }
 }

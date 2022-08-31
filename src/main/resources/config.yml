@@ -14,7 +14,7 @@ rewards:
   0:
     preset: "summon" # summon / give / drop / tp / place / command / skin / skin-random
     price:
-      points: 400 # none or number
+      points: 40 # none or number
       bits: 12 # none or number
     settings:
       summon-radius: 3 # double, 0 spawn in player position
@@ -39,7 +39,7 @@ rewards:
   1:
     preset: "give" # summon / give / drop / tp / place / command / skin / skin-random
     price:
-      points: 400 # none or number
+      points: 40 # none or number
       bits: 12 # none or number
     settings:
       slot: -1 # set -1 for random slot or integer number (0-45)
@@ -63,7 +63,7 @@ rewards:
   2:
     preset: "drop" # summon / give / drop / tp / place / command / skin / skin-random
     price:
-      points: 400 # none or number
+      points: 40 # none or number
       bits: 12 # none or number
     settings:
       mode: "drop" # drop / delete
@@ -84,7 +84,7 @@ rewards:
   3:
     preset: "tp" # summon / give / drop / tp / place / command / skin / skin-random
     price:
-      points: 400 # none or number
+      points: 40 # none or number
       bits: 12 # none or number
     settings:
       mode: "random" # random / equals / random-center
@@ -114,17 +114,35 @@ rewards:
       blocks:
         '0':
           material: "IRON_BARS" # Material list in https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
-          orientation: "north" # north / east / west / south
-          top: false # If material support this property
           cords: [1, 0, 1] # [x, y, z] | floor is y=-1
         '1':
           material: "IRON_BARS"
-          orientation: "north"
-          top: false
           cords: [1, 0, 1]
     notify:
       twitch-msg: "" # "" don't send message in twitch
       minecraft-msg: "&b%username%'s &fplace a cage!" # "" don't send message in minecraft
+      title: "&b%username%'s &fowo!" # "" don't send title
+      subtitle: "Hi!" # "" don't send subtitle
+      title-fadein: 20 # Integer in ticks
+      title-fadeout: 20 # Integer in ticks
+      actionbar: "&aReward type: &d%type%" # "" don't send actionbar
+      sound:
+        sound: "ENTITY_EXPERIENCE_ORB_PICKUP" # "" or https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
+        pitch: 1
+        volume: 0.3
+  5:
+    preset: "command" # summon / give / drop / tp / place / command / skin / skin-random
+    price:
+      points: 0 # none or number
+      bits: 12 # none or number
+    settings:
+      sender: "player" # player / console
+      delay: 0 # delay between command
+      commands:
+        - "say hola"
+    notify:
+      twitch-msg: "" # "" don't send message in twitch
+      minecraft-msg: "&b%username%'s &fchange!" # "" don't send message in minecraft
       title: "&b%username%'s &fowo!" # "" don't send title
       subtitle: "Hi!" # "" don't send subtitle
       title-fadein: 20 # Integer in ticks
