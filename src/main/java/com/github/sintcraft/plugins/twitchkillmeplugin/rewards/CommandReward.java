@@ -36,15 +36,11 @@ public class CommandReward implements Runnable {
       int finalI = i;
       Bukkit.getScheduler().runTaskLater(TwitchKillMePlugin.getInstance(), () -> {
         if(settings.getString("sender").equalsIgnoreCase("player")) {
-          for(String name : TwitchKillMePlugin.getInstance().getConfig().getStringList("players")) {
-            Player p = Bukkit.getPlayer(name);
-            if(p == null) continue;
-            p.performCommand(cmds.get(finalI));
-          }
+          player.performCommand(cmds.get(finalI).replaceAll("%player%", player.getName()));
         } else if(settings.getString("sender").equalsIgnoreCase("console")) {
           Bukkit.getServer().dispatchCommand(
                   Bukkit.getServer().getConsoleSender(),
-                  cmds.get(finalI)
+                  cmds.get(finalI).replaceAll("%player%", player.getName())
           );
         }
       }, i * settings.getInt("delay"));
