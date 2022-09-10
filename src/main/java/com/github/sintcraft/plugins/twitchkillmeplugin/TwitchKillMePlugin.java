@@ -11,6 +11,7 @@ public final class TwitchKillMePlugin extends JavaPlugin {
   private List<String> players;
   private static TwitchService twitchService;
   private static TwitchKillMePlugin instance;
+  private MainCommand mainCommand;
 
   @Override
   public void onEnable() {
@@ -18,6 +19,7 @@ public final class TwitchKillMePlugin extends JavaPlugin {
     instance = this;
     reload();
     twitchService = new TwitchService(this);
+    mainCommand = new MainCommand(this);
   }
 
   @Override

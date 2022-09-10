@@ -4,6 +4,7 @@ import com.github.philippheuer.credentialmanager.domain.OAuth2Credential;
 import com.github.sintcraft.plugins.twitchkillmeplugin.events.RewardManager;
 import com.github.twitch4j.TwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
+import com.sun.tools.javac.Main;
 
 public class TwitchService {
   private OAuth2Credential credential;

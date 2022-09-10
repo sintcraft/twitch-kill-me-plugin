@@ -38,7 +38,7 @@ public class BasicReward {
     } else if (config.getString("preset").equalsIgnoreCase("place")) {
       Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), new PlaceReward(player, this, channelName, username, type));
     } else if (config.getString("preset").equalsIgnoreCase("command")) {
-      Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), new PlaceReward(player, this, channelName, username, type));
+      Bukkit.getScheduler().runTask(TwitchKillMePlugin.getInstance(), new CommandReward(player, this, channelName, username, type));
     }
   }
 
