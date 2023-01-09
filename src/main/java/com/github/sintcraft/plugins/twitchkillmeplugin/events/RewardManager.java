@@ -62,8 +62,6 @@ public class RewardManager {
         reward.run(player, channelName, userName, channelID, amount, "points");
       });
     }
-
-    System.out.println(String.format("%s, %s, %s, %s", amount, userName, channelName, channelID));
   }
 
   private void onChannelBitsEvent(ChannelBitsEvent e) {
@@ -81,8 +79,6 @@ public class RewardManager {
         reward.run(player, channelName, userName, channelID, amount, "bits");
       });
     }
-
-    System.out.println(String.format("%s, %s, %s, %s", amount, userName, channelName, channelID));
   }
 
   public static List<BasicReward> getRewards() {
@@ -104,10 +100,19 @@ public class RewardManager {
   private void onSub(SubscriptionEvent e) {
     Subscription sub = e.getEventData();
 
-    boolean amount = sub.getIsGift();
+    boolean isGift = sub.getIsGift();
     String channelID = sub.getBroadcasterId();
     String channelName = sub.getBroadcasterName();
     String userName = sub.getUserName();
+
+    for(BasicReward reward : rewards) {
+      if(!reward.subActive()) continue;
+      plugin.getPlayers().forEach(p -> {
+        Player player = Bukkit.getPlayer(p);
+        if(player == null) return;
+        reward.run(player, channelName, userName, channelID, 1, "sub");
+      });
+    }
   }
 
   private void onHypeTrainStart(HypeTrainStartEvent e) {
@@ -116,5 +121,14 @@ public class RewardManager {
     String channelID = train.getChannelId();
     HypeTrainParticipations hypeTrainParticipations = train.getParticipations();
     int level = train.getProgress().getLevel().getValue();
+
+    for(BasicReward reward : rewards) {
+      if(!reward.hypeTrainActivate(level)) continue;
+      plugin.getPlayers().forEach(p -> {
+        Player player = Bukkit.getPlayer(p);
+        if(player == null) return;
+        reward.run(player, "none", "chat", channelID, level, "train");
+      });
+    }
   }
 }

@@ -48,7 +48,7 @@ public class BasicReward {
     if(notify == null) return;
 
     // Sound
-    if(!notify.getString("sound.sound").equalsIgnoreCase("")) {
+    if(!notify.getString("sound.sound").equalsIgnoreCase("") && notify.getString("sound.sound") != null) {
       player.playSound(
               player.getLocation(),
               Sound.valueOf(notify.getString("sound.sound")),
@@ -58,7 +58,13 @@ public class BasicReward {
     }
 
     // Title
-    if(!notify.getString("title").equalsIgnoreCase("")) {
+    if(
+            !notify.getString("title").equalsIgnoreCase("")
+                    && notify.getString("title") != null
+                    && notify.getString("subtitle") != null
+                    && notify.getString("title-fadein") != null
+                    && notify.getString("title-fadeout") != null
+    ) {
       player.sendTitle(
               format(notify.getString("title"), channelName, username, type),
               format(notify.getString("subtitle"), channelName, username, type),
@@ -69,12 +75,12 @@ public class BasicReward {
     }
 
     // Actionbar
-    if(!notify.getString("actionbar").equalsIgnoreCase("")) {
+    if(!notify.getString("actionbar").equalsIgnoreCase("") && notify.getString("actionbar") != null) {
       player.sendActionBar(format(notify.getString("actionbar"), channelName, username, type));
     }
 
     // Chat
-    if(!notify.getString("minecraft-msg").equalsIgnoreCase("")) {
+    if(!notify.getString("minecraft-msg").equalsIgnoreCase("") && notify.getString("minecraft-msg") != null) {
       player.sendMessage(format(notify.getString("minecraft-msg"), channelName, username, type));
     }
   }
@@ -113,6 +119,17 @@ public class BasicReward {
     if(config.getString("price.points").equalsIgnoreCase("none")) return false;
     return config.getInt("price.points") == amount;
   }
+
+  public boolean subActive() {
+    if(config.getString("price.sub").equalsIgnoreCase("none")) return false;
+    return config.getBoolean("price.sub");
+  }
+
+  public boolean trainActive(int level) {
+    if(config.getString("price.train").equalsIgnoreCase("none")) return false;
+    return config.getInt("price.train") <= level;
+  }
+
   public static String format(String txt, String channelName, String username, String type) {
     return ChatColor.translateAlternateColorCodes('&',
             txt.replaceAll("%username%", username)
